@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="pessoa")
 
@@ -13,15 +15,34 @@ public class Pessoa {
     private int Id;
     @Column
     private String nome;
+    
     @Column
     private String sobrenome;
+    
     @Column
     private String email;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "enderecoID")
+    private Endereco endereco;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
+    private List<Pedido> pedidos;
+    
 
-    public Pessoa(String nome, String sobrenome, String email) {
+    public Pessoa(String nome, String sobrenome, String email, Endereco endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;
+        this.endereco = endereco;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -63,6 +84,7 @@ public class Pessoa {
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
                 ", email='" + email + '\'' +
+                ", endereco=" + endereco +
                 '}';
     }
 }
