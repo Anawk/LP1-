@@ -1,36 +1,26 @@
 package Agenda;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class Lembrete extends Eventos {
-   private String hora;
+   private Date hora;
     Scanner scanner = new Scanner(System.in);
 
-    public String getHora() {
+    public Lembrete() {
+
+    }
+
+    public Date getHora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(Date hora) {
         this.hora = hora;
     }
 
-    public Lembrete(String nome, String data, String descricao, String hora) {
-        super(nome, data, descricao);
+    public Lembrete(String nome, String descricao, Date data,Date hora) {
+        super(nome, descricao,data);
         this.hora = hora;
     }
-
-    public void addLembrete() {
-        System.out.println("Nome do Lembrete:");
-        setNome(scanner.nextLine());
-
-        System.out.println("Data do Lembrete:");
-        setData(scanner.nextLine());
-
-        System.out.println("Descrição:");
-        setDescricao(scanner.nextLine());
-
-        System.out.println("Horário:");
-        setHora(scanner.nextLine());
-    }
-
 }
