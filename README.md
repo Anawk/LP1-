@@ -1,2 +1,2 @@
 # LP1-
-Repositório das aulas de LP1
+Repositório para testes da aula de LP1
